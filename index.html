@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AeroBalance | PA-28-161 Warrior II</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <main class="container">
+
+        <header>
+            <h1>AeroBalance</h1>
+            <h2>PA-28-161 Warrior II</h2>
+
+            <p class="subtitle">
+                Aircraft Weight, Balance & Center of Gravity Calculator
+            </p>
+        </header>
+
+
+        <!-- AIRCRAFT -->
+
+        <section class="card">
+
+            <h3>Aircraft</h3>
+
+            <div class="input-group">
+                <label for="emptyWeight">
+                    Basic Empty Weight (lb)
+                </label>
+
+                <input
+                    type="number"
+                    id="emptyWeight"
+                    value="1500"
+                    min="0"
+                    step="0.1"
+                >
+            </div>
+
+
+            <div class="input-group">
+                <label for="emptyCG">
+                    Basic Empty CG (in)
+                </label>
+
+                <input
+                    type="number"
+                    id="emptyCG"
+                    value="85.9"
+                    min="0"
+                    step="0.1"
+                >
+            </div>
+
+        </section>
+
+
+        <!-- OCCUPANTS -->
+
+        <section class="card">
+
+            <h3>Occupants</h3>
+
+            <div class="input-group">
+                <label for="pilot">
+                    Pilot Weight (lb)
+                </label>
+
+                <input
+                    type="number"
+                    id="pilot"
+                    value="170"
+                    min="0"
+                    step="1"
+                >
+            </div>
+
+
+            <div class="input-group">
+                <label for="frontPassenger">
+                    Front Passenger (lb)
+                </label>
+
+                <input
+                    type="number"
+                    id="frontPassenger"
+                    value="170"
+                    min="0"
+                    step="1"
+                >
+            </div>
+
+
+            <div class="input-group">
+                <label for="rearPassengers">
+                    Rear Passengers Total (lb)
+                </label>
+
+                <input
+                    type="number"
+                    id="rearPassengers"
+                    value="0"
+                    min="0"
+                    step="1"
+                >
+            </div>
+
+        </section>
+
+
+        <!-- FUEL AND BAGGAGE -->
+
+        <section class="card">
+
+            <h3>Fuel & Baggage</h3>
+
+            <div class="input-group">
+                <label for="fuelGallons">
+                    Ramp Fuel (US gallons)
+                </label>
+
+                <input
+                    type="number"
+                    id="fuelGallons"
+                    value="30"
+                    min="0"
+                    max="48"
+                    step="0.1"
+                >
+            </div>
+
+
+            <div class="input-group">
+                <label for="tripFuelGallons">
+                    Trip Fuel Burn (US gallons)
+                </label>
+
+                <input
+                    type="number"
+                    id="tripFuelGallons"
+                    value="15"
+                    min="0"
+                    step="0.1"
+                >
+            </div>
+
+
+            <div class="input-group">
+                <label for="baggage">
+                    Baggage Weight (lb)
+                </label>
+
+                <input
+                    type="number"
+                    id="baggage"
+                    value="20"
+                    min="0"
+                    max="200"
+                    step="1"
+                >
+            </div>
+
+        </section>
+
+
+        <button id="calculateButton">
+            Calculate Weight & Balance
+        </button>
+
+
+        <!-- RAMP -->
+
+        <section class="card results">
+
+            <h2>Ramp Condition</h2>
+
+            <div class="result-row">
+                <span>Total Weight</span>
+                <strong id="totalWeightResult">--</strong>
+            </div>
+
+            <div class="result-row">
+                <span>Total Moment</span>
+                <strong id="totalMomentResult">--</strong>
+            </div>
+
+            <div class="result-row">
+                <span>Center of Gravity</span>
+                <strong id="cgResult">--</strong>
+            </div>
+
+        </section>
+
+
+        <!-- TAKEOFF -->
+
+        <section class="card results">
+
+            <h2>Takeoff Condition</h2>
+
+            <div class="result-row">
+                <span>Takeoff Weight</span>
+                <strong id="takeoffWeightResult">--</strong>
+            </div>
+
+            <div class="result-row">
+                <span>Takeoff CG</span>
+                <strong id="takeoffCGResult">--</strong>
+            </div>
+
+            <div class="result-row">
+                <span>Forward CG Limit</span>
+                <strong id="forwardLimitResult">--</strong>
+            </div>
+
+            <div class="result-row">
+                <span>Aft CG Limit</span>
+                <strong id="aftLimitResult">--</strong>
+            </div>
+
+            <div class="result-row">
+                <span>Fuel Remaining at Takeoff</span>
+                <strong id="takeoffFuelResult">--</strong>
+            </div>
+
+        </section>
+
+
+        <!-- LANDING -->
+
+        <section class="card results">
+
+            <h2>Landing Condition</h2>
+
+            <div class="result-row">
+                <span>Landing Weight</span>
+                <strong id="landingWeightResult">--</strong>
+            </div>
+
+            <div class="result-row">
+                <span>Landing CG</span>
+                <strong id="landingCGResult">--</strong>
+            </div>
+
+            <div class="result-row">
+                <span>Forward CG Limit</span>
+                <strong id="landingForwardLimitResult">--</strong>
+            </div>
+
+            <div class="result-row">
+                <span>Aft CG Limit</span>
+                <strong id="landingAftLimitResult">--</strong>
+            </div>
+
+            <div class="result-row">
+                <span>Fuel Remaining at Landing</span>
+                <strong id="landingFuelResult">--</strong>
+            </div>
+
+        </section>
+
+
+        <!-- STATUS -->
+
+        <section class="status-card">
+
+            <h2>Aircraft Status</h2>
+
+            <div id="statusResult" class="status">
+                ENTER AIRCRAFT DATA
+            </div>
+
+        </section>
+
+
+        <!-- LOADING SUMMARY -->
+
+        <section class="card">
+
+            <h2>Loading Summary</h2>
+
+            <div class="summary-grid">
+
+                <div class="summary-box">
+                    <span>Max Takeoff Useful Load</span>
+                    <strong id="usefulLoadResult">--</strong>
+                </div>
+
+                <div class="summary-box">
+                    <span>Payload</span>
+                    <strong id="payloadResult">--</strong>
+                </div>
+
+                <div class="summary-box">
+                    <span>Ramp Fuel Weight</span>
+                    <strong id="fuelWeightResult">--</strong>
+                </div>
+
+                <div class="summary-box">
+                    <span>Takeoff Weight Margin</span>
+                    <strong id="weightMarginResult">--</strong>
+                </div>
+
+                <div class="summary-box">
+                    <span>Full-Fuel Payload Capacity</span>
+                    <strong id="fullFuelPayloadResult">--</strong>
+                </div>
+
+                <div class="summary-box">
+                    <span>Useful Load Used</span>
+                    <strong id="usefulLoadUsedResult">--</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CG GRAPH -->
+
+        <section class="card graph-card">
+
+            <h2>Center of Gravity Envelope</h2>
+
+            <p class="graph-description">
+                Normal Category Weight vs. Center of Gravity
+            </p>
+
+            <div class="graph-wrapper">
+
+                <svg
+                    id="cgGraph"
+                    viewBox="0 0 760 470"
+                    role="img"
+                    aria-label="Aircraft center of gravity envelope graph"
+                ></svg>
+
+            </div>
+
+
+            <div class="legend">
+
+                <div class="legend-item">
+                    <span class="legend-box envelope-legend"></span>
+                    Allowable CG Region
+                </div>
+
+                <div class="legend-item">
+                    <span class="legend-dot ramp-legend"></span>
+                    Ramp
+                </div>
+
+                <div class="legend-item">
+                    <span class="legend-dot takeoff-legend"></span>
+                    Takeoff
+                </div>
+
+                <div class="legend-item">
+                    <span class="legend-dot landing-legend"></span>
+                    Landing
+                </div>
+
+            </div>
+
+
+            <div class="flight-table-wrapper">
+
+                <table class="flight-table">
+
+                    <thead>
+                        <tr>
+                            <th>Condition</th>
+                            <th>Weight</th>
+                            <th>CG</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Ramp</td>
+                            <td id="tableRampWeight">--</td>
+                            <td id="tableRampCG">--</td>
+                        </tr>
+
+                        <tr>
+                            <td>Takeoff</td>
+                            <td id="tableTakeoffWeight">--</td>
+                            <td id="tableTakeoffCG">--</td>
+                        </tr>
+
+                        <tr>
+                            <td>Landing</td>
+                            <td id="tableLandingWeight">--</td>
+                            <td id="tableLandingCG">--</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <p class="graph-note">
+                The 1400 lb lower edge is only the graph display floor and
+                is not treated as an aircraft minimum-weight limitation.
+                The trajectory illustrates CG movement as fuel is consumed.
+            </p>
+
+        </section>
+
+
+        <footer>
+
+            <strong>
+                Educational demonstration only.
+            </strong>
+
+            <p>
+                Not approved for flight planning. Always use the current
+                POH/AFM and aircraft-specific weight-and-balance records
+                for operational calculations.
+            </p>
+
+        </footer>
+
+    </main>
+
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        AeroBalance Validation Suite
+    </title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Arial,
+                sans-serif;
+
+            background: #f4f6f8;
+
+            color: #1a1a1a;
+
+        }
+
+
+        main {
+
+            width: 92%;
+
+            max-width: 1000px;
+
+            margin: 40px auto;
+
+        }
+
+
+        h1 {
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .subtitle {
+
+            color: #666;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .summary {
+
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 10px;
+
+            margin-bottom: 25px;
+
+            box-shadow:
+                0 2px 8px
+                rgba(0, 0, 0, 0.08);
+
+        }
+
+
+        .summary-result {
+
+            font-size: 28px;
+
+            font-weight: 800;
+
+            margin-top: 10px;
+
+        }
+
+
+        .all-pass {
+
+            color: #16713a;
+
+        }
+
+
+        .has-failure {
+
+            color: #a52424;
+
+        }
+
+
+        table {
+
+            width: 100%;
+
+            border-collapse: collapse;
+
+            background: white;
+
+            border-radius: 10px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 2px 8px
+                rgba(0, 0, 0, 0.08);
+
+        }
+
+
+        th,
+        td {
+
+            padding: 15px;
+
+            border-bottom:
+                1px solid #e5e5e5;
+
+            text-align: left;
+
+        }
+
+
+        th {
+
+            background: #eef2f5;
+
+        }
+
+
+        .pass {
+
+            color: #16713a;
+
+            font-weight: 800;
+
+        }
+
+
+        .fail {
+
+            color: #a52424;
+
+            font-weight: 800;
+
+        }
+
+
+        .source-note {
+
+            margin-top: 25px;
+
+            padding: 20px;
+
+            background: white;
+
+            border-radius: 10px;
+
+            color: #555;
+
+            line-height: 1.5;
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <main>
+
+        <h1>
+            AeroBalance Engineering Validation
+        </h1>
+
+        <p class="subtitle">
+            Automated PA-28-161 calculation and limit-checking tests
+        </p>
+
+
+        <section class="summary">
+
+            <strong>
+                Validation Result
+            </strong>
+
+            <div
+                id="testSummary"
+                class="summary-result"
+            >
+                Running...
+            </div>
+
+        </section>
+
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Test
+                    </th>
+
+                    <th>
+                        Result
+                    </th>
+
+                    <th>
+                        Details
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="testResults">
+            </tbody>
+
+        </table>
+
+
+        <div class="source-note">
+
+            <strong>
+                Validation methodology
+            </strong>
+
+            <p>
+                The Piper validation case reproduces the published
+                PA-28-161 Warrior II POH sample loading problem.
+                The remaining cases are synthetic regression tests
+                designed to deliberately trigger individual software
+                warnings and boundary conditions.
+            </p>
+
+            <p>
+                Educational demonstration only. Not approved for
+                operational flight planning.
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <script src="app.js"></script>
+
+    <script src="tests.js"></script>
+
+</body>
+
+</html>
