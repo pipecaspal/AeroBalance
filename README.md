@@ -2,6 +2,10 @@
 
 ### PA-28-161 Warrior II Weight & Balance Analysis Tool
 
+## Live Demo
+
+**[Launch AeroBalance](https://pipecaspal.github.io/AeroBalance/)**
+
 AeroBalance is an interactive aircraft weight-and-balance application developed for the Piper PA-28-161 Warrior II.
 
 The project calculates aircraft loading conditions during ramp, takeoff, and landing, evaluates center-of-gravity limits, models CG movement caused by fuel consumption, and visualizes the aircraft's loading condition within the allowable CG envelope.
